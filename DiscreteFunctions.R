@@ -4,7 +4,7 @@ library(corHMM)
 library(phytools)
 library(phangorn)
 
-#You can use code you wrote for the correlation exercise here.
+?pace#You can use code you wrote for the correlation exercise here.
 
 
 VisualizeData <- function(phy, data) {

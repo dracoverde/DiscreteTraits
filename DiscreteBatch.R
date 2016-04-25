@@ -8,7 +8,7 @@ cleaned.discrete <- CleanData(tree, discrete.data)
 VisualizeData(tree, cleaned.discrete)
 
 #First, let's use parsimony to look at ancestral states
-cleaned.discrete.phyDat <- phyDat(cleaned.discrete, type="______________") #phyDat is a data format used by phangorn
+cleaned.discrete.phyDat <- phyDat(cleaned.discrete, type="Type of sequences ("DNA", "AA", "CODON" or "USER").") #phyDat is a data format used by phangorn
 anc.p <- ancestral.pars(tree, cleaned.discrete.phyDat)
 plotAnc(tree, anc.p, 1)
 
@@ -23,7 +23,7 @@ plotAnc(tree, anc.ml, 1)
 #What does uncertainty mean?
 
 #How many changes are there in your trait under parsimony? 
-parsimony.score <- ____some_function_____(tree, cleanded.discrete.phyDat)
+parsimony.score <- parsimony(tree, cleanded.discrete.phyDat)
 print(parsimony.score)
 
 #Can you estimate the number of changes under a likelihood-based model? 
@@ -42,3 +42,4 @@ print(counts)
 #  As in the correlation week, where hypotheses were examined by constraining rate matrices, one can constrain rates to examine hypotheses. corHMM, ape, and other packages have ways to address this.
 #  Rates change over time, and this could be relevant to a biological question: have rates sped up post KT, for example. Look at the models in geiger for ways to do this.
 #  You might observe rates for one trait but it could be affected by some other trait: you only evolve wings once on land, for example. corHMM can help investigate this.
+
