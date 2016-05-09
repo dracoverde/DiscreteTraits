@@ -1,14 +1,18 @@
 #You can use code you wrote for the correlation exercise here.
 source("DiscreteFunctions.R")
-tree <- read.tree("____PATH_TO_TREE_OR_SOME_OTHER_WAY_OF_GETTING_A_TREE____")
-discrete.data <- read.csv(file="____PATH_TO_DATA_OR_SOME_OTHER_WAY_OF_GETTING_TRAITS____", stringsAsFactors=FALSE) #death to factors.
+# tree <- read.tree("____PATH_TO_TREE_OR_SOME_OTHER_WAY_OF_GETTING_A_TREE____")
+# discrete.data <- read.csv(file="____PATH_TO_DATA_OR_SOME_OTHER_WAY_OF_GETTING_TRAITS____", stringsAsFactors=FALSE) #death to factors.
+
+data(whales)
+tree <- whales
+discrete.data <- rTraitDisc(tree, model = "ER", k=2, states=c(0,1))
 
 cleaned.discrete <- CleanData(tree, discrete.data)
 
 VisualizeData(tree, cleaned.discrete)
 
 #First, let's use parsimony to look at ancestral states
-cleaned.discrete.phyDat <- phyDat(cleaned.discrete, type="Type of sequences ("DNA", "AA", "CODON" or "USER").") #phyDat is a data format used by phangorn
+cleaned.discrete.phyDat <- phyDat(cleaned.discrete, type="USER", levels=c(0,1)) #phyDat is a data format used by phangorn
 anc.p <- ancestral.pars(tree, cleaned.discrete.phyDat)
 plotAnc(tree, anc.p, 1)
 
