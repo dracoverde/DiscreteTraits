@@ -1,5 +1,5 @@
 #You can use code you wrote for the correlation exercise here.
-source("DiscreteFunctions.R")
+source("E:/SCHOOL/Documents-School/Class/EEB_603_PhyloMeth/Repository2/DiscreteTraits/DiscreteFunctions.R")
 # tree <- read.tree("____PATH_TO_TREE_OR_SOME_OTHER_WAY_OF_GETTING_A_TREE____")
 # discrete.data <- read.csv(file="____PATH_TO_DATA_OR_SOME_OTHER_WAY_OF_GETTING_TRAITS____", stringsAsFactors=FALSE) #death to factors.
 
@@ -13,13 +13,13 @@ VisualizeData(tree, cleaned.discrete)
 
 #First, let's use parsimony to look at ancestral states
 cleaned.discrete.phyDat <- phyDat(cleaned.discrete, type="USER", levels=c(0,1)) #phyDat is a data format used by phangorn
-anc.p <- ancestral.pars(tree, cleaned.discrete.phyDat)
+anc.p <- ancestral.pars(tree, cleaned.discrete.phyDat, type="MPR")
 plotAnc(tree, anc.p, 1)
 
 #Do you see any uncertainty? What does that meean for parsimony?
 
 #now plot the likelihood reconstruction
-anc.ml <- ancestral.pml(pml(tree, cleaned.discrete.phyDat), type="ml")
+anc.ml <- ancestral.pml(pml(tree, cleaned.discrete.phyDat, type="ml"), type="ml")
 plotAnc(tree, anc.ml, 1)
 
 #How does this differ from parsimony? 
